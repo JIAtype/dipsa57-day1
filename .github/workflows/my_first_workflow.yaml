@@ -1,0 +1,23 @@
+name: My first workflow
+on:
+- push
+
+jobs:
+    my_first_ci:
+        
+        runs-on: ubuntu-latest
+            #只有这版免费？其他Mac window收费
+
+            #这部分好像不能在这里用
+        steps:
+        - name: get date in Github
+          id: get_date_in_github
+          run: echo “Date in Github $(date)”
+
+        - name: list directory
+          id: list_directoey
+          run: echo "$(ls -l)"
+
+        - name: echo github context
+          id: echo_github_context
+          run: "ref_name ${{ github.ref_name}}\n repository ${{github.repository}}\n owner ${{github.repository_owner}}"
